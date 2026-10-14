@@ -1,5 +1,7 @@
 # Algorithm Website
 
+https://23kerosene.github.io/algorithm-website/
+
 A two-page mobile-first website faithfully coded from a Figma design.
 
 ## Pages
