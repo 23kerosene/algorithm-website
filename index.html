@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+  <title>Algorithm</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ============================================================ -->
+  <!-- PAGE 1: Home (UPGRADE HUMAN) — B&W pixelated satellite map   -->
+  <!-- ============================================================ -->
+  <section class="page page--home" id="page-home">
+
+    <!-- Background: pixelated B&W satellite texture -->
+    <div class="bg-layer bg-pixels" style="background-image: url('images/pixels2.png');"></div>
+    <!-- Glitch overlay texture -->
+    <div class="bg-layer bg-glitch" style="background-image: url('images/glitch2.png');"></div>
+
+    <!-- Header -->
+    <header class="header header--home">
+      <a href="https://instagram.com" target="_blank" rel="noopener" class="header__icon" aria-label="Instagram">
+        <img src="images/insta_icon.png" alt="Instagram" />
+      </a>
+      <div class="header__logo">
+        <img src="images/asterisk.png" alt="Logo" />
+      </div>
+      <button class="header__menu" aria-label="Menu">
+        <img src="images/menu_icon.png" alt="Menu" />
+      </button>
+    </header>
+
+    <!-- Centre asterisk decorative -->
+    <div class="home__center-asterisk">
+      <img src="images/asterisk.png" alt="" aria-hidden="true" />
+    </div>
+
+    <!-- Main headline -->
+    <div class="home__headline">
+      <span class="headline-block">UPGRADE</span>
+      <span class="headline-block">HUMAN</span>
+    </div>
+
+    <!-- Bottom PRAY button linking to Deity page -->
+    <div class="home__pray-cta">
+      <a href="#page-deity" class="pray-btn" aria-label="Go to Deity page">
+        <img src="images/pray_text.png" alt="PRAY" />
+      </a>
+    </div>
+
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- PAGE 2: Deity_1 — dark neon-red glitch art                  -->
+  <!-- ============================================================ -->
+  <section class="page page--deity" id="page-deity">
+
+    <!-- Full background: dark chaotic photo with neon red glitch lines -->
+    <div class="bg-layer bg-deity" style="background-image: url('images/deity1_overlay.png');"></div>
+    <!-- Additional glitch overlay -->
+    <div class="bg-layer bg-deity-glitch" style="background-image: url('images/deity1_bg.png');"></div>
+
+    <!-- Header (same structure, inverted/dark) -->
+    <header class="header header--deity">
+      <a href="https://instagram.com" target="_blank" rel="noopener" class="header__icon" aria-label="Instagram">
+        <img src="images/insta_icon.png" alt="Instagram" />
+      </a>
+      <div class="header__logo">
+        <img src="images/asterisk.png" alt="Logo" />
+      </div>
+      <button class="header__menu" aria-label="Menu">
+        <img src="images/menu_icon.png" alt="Menu" />
+      </button>
+    </header>
+
+    <!-- Scrolling data ticker (green number like 136.97351) -->
+    <div class="deity__ticker" aria-hidden="true">
+      <span class="ticker-value" id="ticker">136.97351</span>
+    </div>
+
+    <!-- Red glitch rectangle block -->
+    <div class="deity__red-block"></div>
+
+    <!-- Floating quote card -->
+    <div class="deity__quote">
+      <p>Twin enjoying this<br />feed of<br />real time<br />social collapse?</p>
+    </div>
+
+    <!-- PRAY image at bottom -->
+    <div class="deity__pray">
+      <a href="#page-home" aria-label="Back to Home">
+        <img src="images/pray_text.png" alt="PRAY" />
+      </a>
+    </div>
+
+  </section>
+
+  <!-- Mobile nav dots -->
+  <nav class="page-nav" aria-label="Page navigation">
+    <a href="#page-home" class="page-nav__dot page-nav__dot--active" aria-label="Home page"></a>
+    <a href="#page-deity" class="page-nav__dot" aria-label="Deity page"></a>
+  </nav>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,415 @@
+/* ============================================================
+   RESET & BASE
+   ============================================================ */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-snap-type: y mandatory;
+  overflow-y: scroll;
+  height: 100%;
+}
+
+body {
+  font-family: 'Arial Black', 'Arial', sans-serif;
+  background: #000;
+  color: #fff;
+  overflow-x: hidden;
+  height: 100%;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* ============================================================
+   PAGES — full-viewport, scroll-snap sections
+   ============================================================ */
+.page {
+  position: relative;
+  width: 100%;
+  min-height: 100svh;
+  height: 100svh;
+  overflow: hidden;
+  scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ============================================================
+   BACKGROUND LAYERS
+   ============================================================ */
+.bg-layer {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* ---- HOME PAGE backgrounds ---- */
+.bg-pixels {
+  z-index: 0;
+  background-size: cover;
+  filter: grayscale(100%) contrast(1.1);
+}
+
+.bg-glitch {
+  z-index: 1;
+  opacity: 0.25;
+  mix-blend-mode: multiply;
+}
+
+/* ---- DEITY PAGE backgrounds ---- */
+.bg-deity {
+  z-index: 0;
+  background-size: cover;
+  background-position: center top;
+}
+
+.bg-deity-glitch {
+  z-index: 1;
+  opacity: 0.35;
+  mix-blend-mode: screen;
+}
+
+/* ============================================================
+   HEADER
+   ============================================================ */
+.header {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 13px 18px;
+  width: 100%;
+  height: 74px;
+  flex-shrink: 0;
+}
+
+.header__icon img,
+.header__logo img,
+.header__menu img {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+}
+
+/* Deity page: invert icons to white */
+.header--deity .header__icon img,
+.header--deity .header__logo img,
+.header--deity .header__menu img {
+  filter: invert(1);
+}
+
+.header__menu {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+/* ============================================================
+   HOME PAGE — UPGRADE HUMAN  (B&W mosaic / satellite texture)
+   ============================================================ */
+.page--home {
+  background: #b8b4ae;
+  justify-content: flex-start;
+}
+
+/* Centre decorative asterisk — positioned between header and text */
+.home__center-asterisk {
+  position: absolute;
+  z-index: 5;
+  top: 26%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: clamp(55px, 16vw, 80px);
+}
+
+.home__center-asterisk img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+/* UPGRADE HUMAN text block — sits at ~45% from top */
+.home__headline {
+  position: absolute;
+  z-index: 5;
+  top: 44%;
+  left: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0 20px;
+}
+
+.headline-block {
+  display: inline-block;
+  background: #000;
+  color: #fff;
+  font-family: 'Arial Black', 'Impact', Arial, sans-serif;
+  font-size: clamp(38px, 10.5vw, 54px);
+  font-weight: 900;
+  letter-spacing: -0.01em;
+  line-height: 1;
+  padding: 4px 12px 6px;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+
+/* PRAY CTA at bottom */
+.home__pray-cta {
+  position: absolute;
+  z-index: 5;
+  bottom: 28px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: clamp(140px, 52vw, 220px);
+}
+
+.pray-btn {
+  display: block;
+  width: 100%;
+  transition: transform 0.2s ease;
+}
+
+.pray-btn:hover {
+  transform: scale(1.04);
+}
+
+.pray-btn img {
+  width: 100%;
+  height: auto;
+}
+
+/* ============================================================
+   DEITY PAGE — Dark Neon Red Glitch Art
+   ============================================================ */
+.page--deity {
+  background: #080808;
+  justify-content: flex-start;
+}
+
+/* Green counter ticker (top-left mid area) */
+.deity__ticker {
+  position: absolute;
+  z-index: 10;
+  left: 18px;
+  top: 40%;
+  font-family: 'Courier New', monospace;
+  font-size: 13px;
+  font-weight: bold;
+  color: #00ff41;
+  letter-spacing: 0.06em;
+  text-shadow: 0 0 6px rgba(0,255,65,0.7);
+  animation: tickerUpdate 2.5s steps(1) infinite;
+}
+
+@keyframes tickerUpdate {
+  0%   { content: '136.97351'; opacity: 1; }
+  30%  { opacity: 0.7; }
+  31%  { opacity: 1; }
+  65%  { opacity: 0.85; }
+  66%  { opacity: 1; }
+  100% { opacity: 1; }
+}
+
+/* Red rectangle block (left side, ~42-64% height) */
+.deity__red-block {
+  position: absolute;
+  z-index: 6;
+  left: 0;
+  top: 44%;
+  width: 43%;
+  height: 21%;
+  background: #ff0000;
+}
+
+/* Floating rotated quote card */
+.deity__quote {
+  position: absolute;
+  z-index: 9;
+  top: 35%;
+  left: 40%;
+  transform: rotate(-14deg);
+  width: clamp(130px, 40vw, 195px);
+  background: rgba(5, 5, 5, 0.9);
+  padding: 12px 16px;
+  border-left: 2px solid rgba(255,50,50,0.4);
+}
+
+.deity__quote p {
+  font-family: 'Impact', 'Arial Black', Arial, sans-serif;
+  font-size: clamp(11px, 3.2vw, 15px);
+  color: #fff;
+  font-weight: 700;
+  line-height: 1.35;
+  font-style: italic;
+}
+
+/* PRAY image/link at the very bottom */
+.deity__pray {
+  position: absolute;
+  z-index: 10;
+  bottom: 18px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: clamp(180px, 58vw, 260px);
+}
+
+.deity__pray img {
+  width: 100%;
+  height: auto;
+  transition: transform 0.2s ease;
+}
+
+.deity__pray a:hover img {
+  transform: scale(1.04);
+}
+
+/* ============================================================
+   NEON RED GLITCH LINE OVERLAY on Deity page
+   ============================================================ */
+.page--deity::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+  background-image:
+    linear-gradient(transparent 14%, rgba(255,0,0,0.4) 14%, rgba(255,0,0,0.4) 14.25%, transparent 14.25%),
+    linear-gradient(transparent 36%, rgba(255,0,0,0.25) 36%, rgba(255,0,0,0.25) 36.2%, transparent 36.2%),
+    linear-gradient(transparent 60%, rgba(255,0,0,0.3) 60%, rgba(255,0,0,0.3) 60.25%, transparent 60.25%),
+    linear-gradient(transparent 80%, rgba(255,0,0,0.35) 80%, rgba(255,0,0,0.35) 80.2%, transparent 80.2%);
+  animation: glitchScan 10s linear infinite;
+}
+
+@keyframes glitchScan {
+  0%   { transform: translateY(0); }
+  10%  { transform: translateY(-3px); }
+  20%  { transform: translateY(2px); }
+  30%  { transform: translateY(0); }
+  60%  { transform: translateY(1px); }
+  100% { transform: translateY(0); }
+}
+
+/* Diagonal repeating lines (the chaotic angular lines in design) */
+.page--deity::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  pointer-events: none;
+  background:
+    repeating-linear-gradient(
+      128deg,
+      transparent 0px,
+      transparent 60px,
+      rgba(255, 0, 0, 0.14) 60px,
+      rgba(255, 0, 0, 0.14) 61px
+    ),
+    repeating-linear-gradient(
+      52deg,
+      transparent 0px,
+      transparent 90px,
+      rgba(255, 0, 0, 0.08) 90px,
+      rgba(255, 0, 0, 0.08) 91px
+    );
+  animation: angularGlitch 7s ease-in-out infinite alternate;
+}
+
+@keyframes angularGlitch {
+  0%   { opacity: 0.7; transform: skewX(0deg); }
+  25%  { opacity: 1;   transform: skewX(0.3deg); }
+  50%  { opacity: 0.8; transform: skewX(-0.2deg); }
+  100% { opacity: 1;   transform: skewX(0deg); }
+}
+
+/* ============================================================
+   GLITCH flicker on PRAY images
+   ============================================================ */
+@keyframes glitchFlicker {
+  0%, 94%, 100% { clip-path: none; transform: none; filter: none; }
+  95% {
+    clip-path: polygon(0 15%, 100% 15%, 100% 35%, 0 35%);
+    transform: translate(-5px, 0);
+    filter: hue-rotate(90deg);
+  }
+  97% {
+    clip-path: polygon(0 55%, 100% 55%, 100% 78%, 0 78%);
+    transform: translate(5px, 0);
+    filter: hue-rotate(-90deg);
+  }
+}
+
+.pray-btn img,
+.deity__pray img {
+  animation: glitchFlicker 7s step-end infinite;
+}
+
+/* ============================================================
+   PAGE NAV DOTS (fixed right side)
+   ============================================================ */
+.page-nav {
+  position: fixed;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 200;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.page-nav__dot {
+  display: block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.35);
+  border: 1.5px solid rgba(255,255,255,0.65);
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.page-nav__dot--active,
+.page-nav__dot:hover {
+  background: #fff;
+  transform: scale(1.35);
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (min-width: 500px) {
+  .headline-block {
+    font-size: clamp(52px, 11vw, 72px);
+  }
+}
+
+@media (max-width: 380px) {
+  .deity__quote {
+    left: 35%;
+    width: 55vw;
+  }
+  .deity__red-block {
+    width: 50%;
+    height: 20%;
+  }
+  .headline-block {
+    font-size: 36px;
+  }
+}
